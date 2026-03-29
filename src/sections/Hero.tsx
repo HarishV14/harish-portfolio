@@ -7,6 +7,7 @@ import Container from "@/components/Container";
 import Image from "next/image";
 import { SiPython, SiDjango, SiReact, SiWordpress } from "react-icons/si";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { useVisitor } from "@/context/VisitorContext";
 
 // ─── Animation Variants ──────────────────────────────────────────────────────
 
@@ -175,7 +176,17 @@ function PortraitCard() {
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 
 export default function Hero() {
+  const { visitorName } = useVisitor();
+  const [mounted, setMounted] = useState(false);
   const typedText = useTypingEffect(heroData.roles, 75, 2200);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const personalizedGreeting = mounted && visitorName 
+    ? `Hi ${visitorName}, I'm Harish 👋` 
+    : heroData.greeting;
 
   return (
     <section
@@ -195,7 +206,7 @@ export default function Hero() {
             {/* Greeting badge */}
             <motion.div variants={itemVariants} className="mb-4">
               <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full text-lg font-bold border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 shadow-lg shadow-cyan-500/10">
-                {heroData.greeting}
+                {personalizedGreeting}
               </span>
             </motion.div>
 

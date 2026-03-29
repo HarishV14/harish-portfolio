@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 @theme {
+  /* Base backgrounds */
   --color-background: #0f172a;
   --color-foreground: #f8fafc;
-  --color-primary: #6366f1;
-  --color-accent: #06b6d4;
-  --color-highlight: #22c55e;
+  
+  /* Primary Color System */
+  --color-primary: #6366f1;       /* indigo */
+  --color-primary-hover: #818cf8;
+  --color-primary-active: #4f46e5;
+  
+  /* Additional Accents */
+  --color-accent: #06b6d4;        /* cyan */
+  --color-highlight: #22c55e;     /* green */
+
+  /* Fonts */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Glass effect utilities ready for standard components */
+@utility glass {
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
+  
   body {
-    background-color: var(--color-background);
+    background-color: #0b0b0f;
     color: var(--color-foreground);
+    position: relative;
+    /* Layer 2 — Gradient glow blobs */
+    background-image: 
+      radial-gradient(circle at 15% 20%, rgba(147, 51, 234, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(34, 211, 238, 0.08) 0%, transparent 40%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
   }
 
   /* Typography Hierarchy */
   h1 {
-    /* Hero title */
     font-size: 2.5rem;
     line-height: 1.2;
     font-weight: 800;
@@ -35,7 +60,6 @@
   }
 
   h2 {
-    /* Section titles */
     font-size: 2rem;
     line-height: 1.3;
     font-weight: 700;
@@ -50,10 +74,8 @@
   }
 
   p {
-    /* Body text */
     font-size: 1.125rem;
     line-height: 1.75;
-    color: #94a3b8; /* slate-400 equivalent */
+    color: #94a3b8;
   }
 }
-

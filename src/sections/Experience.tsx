@@ -1,0 +1,12 @@
+import SectionWrapper from "@/components/SectionWrapper";
+
+export default function Experience() {
+  return (
+    <SectionWrapper id="experience">
+      <h2 className="mb-8 text-center text-primary">Experience</h2>
+      <div className="glass p-8 rounded-2xl max-w-3xl mx-auto">
+        <p className="text-center">Section coming soon...</p>
+      </div>
+    </SectionWrapper>
+  );
+}

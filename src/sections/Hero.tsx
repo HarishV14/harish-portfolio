@@ -145,6 +145,7 @@ function PortraitCard() {
           fill
           className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
           priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Subtle inner shadow overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
@@ -188,6 +189,9 @@ export default function Hero() {
     ? `Hi ${visitorName}, I'm Harish 👋` 
     : heroData.greeting;
 
+  const displayTypedText = mounted ? typedText : "";
+  const displayGreeting = mounted ? personalizedGreeting : heroData.greeting;
+
   return (
     <section
       id="hero"
@@ -206,7 +210,7 @@ export default function Hero() {
             {/* Greeting badge */}
             <motion.div variants={itemVariants} className="mb-4">
               <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full text-lg font-bold border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 shadow-lg shadow-cyan-500/10">
-                {personalizedGreeting}
+                {displayGreeting}
               </span>
             </motion.div>
 
@@ -242,7 +246,7 @@ export default function Hero() {
               className="mb-6 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight whitespace-nowrap"
             >
               <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                {typedText}
+                {displayTypedText}
               </span>
               <span className="inline-block w-[2px] sm:w-[3px] h-[0.9em] ml-1 bg-cyan-400 align-middle animate-pulse rounded-sm" />
             </motion.h1>

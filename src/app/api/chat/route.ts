@@ -17,8 +17,10 @@ STRICT RULES:
 - **Direct & Seamless**: Answer immediately in the third person. Avoid intro filler.`;
 
 export async function POST(req: NextRequest) {
+  let message = "";
   try {
-    const { message } = await req.json();
+    const body = await req.json();
+    message = body.message;
 
     if (!message || typeof message !== "string") {
       return NextResponse.json({ error: "Invalid message" }, { status: 400 });
@@ -52,15 +54,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ reply, source: "ai" });
   } catch (error) {
     console.error("[/api/chat] Error:", error);
-    // Gracefully fall back to keyword engine
-    try {
-      const { message } = await req.clone().json();
-      return NextResponse.json({ reply: getFallbackResponse(message), source: "fallback" });
-    } catch {
-      return NextResponse.json(
-        { reply: "I'm having trouble connecting right now. Please try again shortly.", source: "error" },
-        { status: 200 }
-      );
+    
+    // Gracefully fall back to keyword engine using the captured message
+    if (message) {
+      return NextResponse.json({ 
+        reply: getFallbackResponse(message), 
+        source: "fallback" 
+      });
     }
+
+    return NextResponse.json(
+      { reply: "I'm having trouble connecting right now. Please try again shortly.", source: "error" },
+      { status: 200 }
+    );
   }
 }

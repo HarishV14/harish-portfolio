@@ -12,12 +12,12 @@ type Intent =
 function detectIntent(message: string): Intent {
   const lower = message.toLowerCase();
 
-  if (/\b(skill|tech|technology|stack|language|framework|tool|use|know|built with)\b/.test(lower)) return "skills";
-  if (/\b(experience|work|job|career|role|position|company|testpress|employment|year)\b/.test(lower)) return "experience";
-  if (/\b(project|build|built|develop|created|flimix|lms|ott|stream|page builder)\b/.test(lower)) return "projects";
-  if (/\b(education|degree|college|university|cgpa|study|graduate|engineering)\b/.test(lower)) return "education";
-  if (/\b(contact|email|phone|reach|linkedin|github|social|location|hire|connect)\b/.test(lower)) return "contact";
-  if (/\b(who|about|harish|yourself|profile|background|tell me|introduce|summary)\b/.test(lower)) return "about";
+  if (/\b(skill|tech|technolog(y|ie)|stack|language|framework|tool|use|know|built with)s?\b/.test(lower)) return "skills";
+  if (/\b(experience|work|job|career|role|position|compan(y|ie)|testpress|employment|year)s?\b/.test(lower)) return "experience";
+  if (/\b(project|build|built|develop|created|flimix|lms|ott|stream|page builder)s?\b/.test(lower)) return "projects";
+  if (/\b(education|degree|college|university|cgpa|study|graduate|engineering)s?\b/.test(lower)) return "education";
+  if (/\b(contact|email|id|phone|reach|linkedin|github|social|location|hire|connect|message)\b/.test(lower)) return "contact";
+  if (/\b(who|about|yourself|profile|background|tell me|introduce|summary)\b/.test(lower)) return "about";
 
   return "unknown";
 }

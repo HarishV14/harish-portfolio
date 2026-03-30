@@ -12,18 +12,19 @@ export default function GreetingAssistant() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if assistant was dismissed this session
+    // Check if assistant was ALREADY dismissed for this session
     const isDismissed = sessionStorage.getItem("portfolioAssistantDismissed");
-    if (isDismissed === "true") return;
-
+    
     // Initial delay before showing the assistant bubble
     const timer = setTimeout(() => {
       setIsVisible(true);
-      // Auto-open if no name is stored
-      if (!visitorName) {
+      
+      const wasAutoOpened = sessionStorage.getItem("portfolioAssistantAutoOpened");
+      if (!visitorName && !isDismissed && !wasAutoOpened) {
         setIsOpen(true);
+        sessionStorage.setItem("portfolioAssistantAutoOpened", "true");
       }
-    }, 3000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [visitorName]);

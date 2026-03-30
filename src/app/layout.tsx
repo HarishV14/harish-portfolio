@@ -29,10 +29,10 @@ export default function RootLayout({
         <VisitorProvider>
           <BackgroundParticles />
           <CustomCursor />
+          <GreetingAssistant />
           <SmoothScroll>
             <Navbar />
             {children}
-            <GreetingAssistant />
           </SmoothScroll>
         </VisitorProvider>
       </body>

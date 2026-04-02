@@ -10,22 +10,26 @@ export default function Skills() {
   return (
     <SectionWrapper
       id="skills"
-      className="relative flex flex-col items-center justify-between md:h-screen md:overflow-hidden pt-24 pb-12 scroll-mt-20"
-      containerClassName="flex flex-col items-center justify-between w-full h-full max-h-[90vh]"
+      className="relative flex flex-col items-center justify-start md:min-h-screen overflow-x-hidden pt-28 md:pt-32 pb-12 md:pb-16"
+      containerClassName="flex flex-col items-center justify-start w-full h-full gap-10 sm:gap-10"
     >
-      {/* Background Dots - Consistency with Hero */}
+      {/* Background Dots - Using standard opacity for broader compatibility */}
       <div 
-        className="absolute inset-0 opacity-[0.06] -z-10 pointer-events-none"
+        className="absolute inset-0 opacity-5 -z-10 pointer-events-none"
         style={{ 
           backgroundImage: "radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)",
           backgroundSize: "32px 32px"
         }}
       />
 
-      {/* Main Glow matching site theme */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px]" />
+      {/* Main Glow - Using Radial Gradients instead of Filter Blur for better performance */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none overflow-hidden">
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20" 
+          style={{
+            background: "radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.05) 40%, transparent 70%)"
+          }}
+        />
       </div>
 
       <motion.div

@@ -108,13 +108,20 @@ const SkillSphere: React.FC<SkillSphereProps> = ({ skills }) => {
 
 
   const [positions, setPositions] = useState<{ skill: Skill; x: number; y: number; z: number }[]>([]);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     let aniFrame: number;
     const updatePositions = () => {
       if (!isDragging.current) {
-        rotation.current.y += 0.0035; // Increased from 0.002
-        rotation.current.x += 0.0015; // Increased from 0.001
+        rotation.current.y += 0.0035; // Slow, consistent rotation
+        rotation.current.x += 0.0015;
       }
 
       const cosX = Math.cos(rotation.current.x);
@@ -125,15 +132,17 @@ const SkillSphere: React.FC<SkillSphereProps> = ({ skills }) => {
       let maxZ = -Infinity;
       let closestSkillId = null;
 
+      const currentRadius = radius || 155; // Fallback to avoid NaN
+
       const newPositions = points.map((p) => {
         const x1 = p.initialX * cosY - p.initialZ * sinY;
         const z1 = p.initialX * sinY + p.initialZ * cosY;
         const y2 = p.initialY * cosX - z1 * sinX;
         const z2 = p.initialY * sinX + z1 * cosX;
 
-        const x = x1 * radius;
-        const y = y2 * radius;
-        const z = z2 * radius;
+        const x = x1 * currentRadius;
+        const y = y2 * currentRadius;
+        const z = z2 * currentRadius;
 
         if (z > maxZ) {
           maxZ = z;
@@ -150,11 +159,15 @@ const SkillSphere: React.FC<SkillSphereProps> = ({ skills }) => {
 
     aniFrame = requestAnimationFrame(updatePositions);
     return () => cancelAnimationFrame(aniFrame);
-  }, [points, radius]);
+  }, [points, radius, mounted]);
 
   const handleHover = (id: string | null) => {
     setHoveredSkillId(id);
   };
+
+  if (!mounted) return (
+    <div style={{ width: radius * 2.4, height: radius * 2.4 }} suppressHydrationWarning />
+  );
 
   return (
     <div 
@@ -170,11 +183,12 @@ const SkillSphere: React.FC<SkillSphereProps> = ({ skills }) => {
     >
       {/* Enhanced Globe Wireframe */}
       <div 
-        className="absolute inset-0 opacity-[0.12] pointer-events-none"
+        className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
             transform: `rotateX(${rotation.current.x}rad) rotateY(${rotation.current.y}rad)`,
             transformStyle: "preserve-3d",
-            transition: "opacity 0.5s ease-out"
+            transition: "opacity 0.5s ease-out",
+            willChange: "transform"
         }}
       >
         <svg viewBox="0 0 1000 1000" className="w-full h-full text-[#6366f1]">
@@ -219,27 +233,27 @@ const SkillSphere: React.FC<SkillSphereProps> = ({ skills }) => {
         </svg>
       </div>
 
-      {/* Structured Detailing rather than just blur */}
+      {/* Structured Detailing rather than just blur - optimized blurs with gradients */}
       <div 
-        className="absolute inset-0 rounded-full border border-[#6366f1]/20 pointer-events-none"
-        style={{ transform: "scale(1.05)" }}
+        className="absolute inset-0 rounded-full border border-indigo-500/20 pointer-events-none"
+        style={{ transform: "scale(1.05)", willChange: "transform" }}
       />
       <div 
-        className="absolute inset-0 rounded-full border border-[#6366f1]/10 pointer-events-none"
-        style={{ transform: "scale(1.1)" }}
+        className="absolute inset-0 rounded-full border border-indigo-500/10 pointer-events-none"
+        style={{ transform: "scale(1.1)", willChange: "transform" }}
       />
 
       <div 
-        className="absolute inset-0 rounded-full blur-[80px] opacity-[0.1] pointer-events-none -z-10"
+        className="absolute inset-0 rounded-full opacity-20 pointer-events-none -z-10"
         style={{ 
-          background: "radial-gradient(circle, #6366f1 0%, #a855f7 30%, transparent 70%)"
+          background: "radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.1) 40%, transparent 80%)"
         }}
       />
       
       {/* Container for icons */}
       <div 
         className="absolute inset-0 flex items-center justify-center"
-        style={{ transformStyle: "preserve-3d" }}
+        style={{ transformStyle: "preserve-3d", willChange: "transform" }}
       >
         {positions.map((pos) => (
           <SkillIcon

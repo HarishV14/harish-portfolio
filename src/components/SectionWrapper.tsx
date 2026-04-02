@@ -21,11 +21,11 @@ export default function SectionWrapper({
   return (
     <motion.section
       id={id}
-      className={cn("py-24", className)}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5 }}
+      className={cn("scroll-mt-0", className)}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <Container className={containerClassName}>
         {children}

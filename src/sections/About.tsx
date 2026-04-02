@@ -25,7 +25,7 @@ export default function About() {
   };
 
   return (
-    <SectionWrapper id="about" className="relative overflow-hidden scroll-mt-20 pt-16 sm:pt-24 md:pt-32 pb-16 md:pb-24">
+    <SectionWrapper id="about" className="relative overflow-hidden pt-24 md:pt-32 pb-12 md:pb-20">
       {/* Background Section Gradient - Subtle Glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] pointer-events-none rounded-full" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 blur-[120px] pointer-events-none rounded-full" />

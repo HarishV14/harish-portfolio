@@ -31,19 +31,14 @@ const SkillIcon: React.FC<SkillIconProps> = ({
   // Normalize Z for depth effects (-radius to +radius)
   const normZ = z / radius; 
   
-  // More aggressive depth effects for a "sphere" look
   // Scale range: 0.35 (back) to 1.35 (front)
   const scale = 0.85 + (normZ * 0.5);
-  
   // Opacity range: 0.1 (back) to 1.0 (front)
   const opacity = 0.55 + (normZ * 0.45);
   
-  // Filter for front/back icons
-  const filter = normZ > 0.3 
-    ? `brightness(1.1) contrast(1.1) drop-shadow(0 0 15px ${skill.color}33)` 
-    : normZ < -0.3 
-        ? "brightness(0.6) grayscale(0.4) blur(1px)" 
-        : "brightness(0.8)";
+  // Simplified styling for performance
+  const brightness = normZ > 0.3 ? 1.1 : normZ < -0.3 ? 0.6 : 0.8;
+  const grayscale = normZ < -0.3 ? 0.4 : 0;
   
   const floatDelay = useMemo(() => {
     let hash = 0;
@@ -54,7 +49,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({
   }, [skill.id]);
 
   const active = isHighlighted || isHovered;
-  const isFront = z > 80; // Threshold for "looking front"
+  const isFront = z > radius * 0.5; // Changed threshold to be radius-dependent
 
   return (
     <motion.div
@@ -65,6 +60,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({
         x: x - hitOffset,
         y: y - hitOffset,
         zIndex: Math.round(z + 1000),
+        willChange: "transform, opacity",
       }}
       animate={{
         scale: isHovered ? scale * 1.25 : scale,
@@ -74,6 +70,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({
         type: "spring",
         stiffness: 400,
         damping: 35,
+        mass: 0.5
       }}
       onMouseEnter={() => onHover(skill.id)}
       onMouseLeave={() => onHover(null)}
@@ -81,8 +78,8 @@ const SkillIcon: React.FC<SkillIconProps> = ({
     >
       <motion.div
         animate={{
-          y: [-1.5, 1.5, -1.5],
-          filter: active ? `drop-shadow(0 0 20px ${skill.color}66)` : filter
+          y: [-1, 1, -1],
+          filter: active ? `brightness(1.2) drop-shadow(0 0 12px ${skill.color}66)` : `brightness(${brightness}) grayscale(${grayscale})`
         }}
         transition={{
           y: {
@@ -91,9 +88,9 @@ const SkillIcon: React.FC<SkillIconProps> = ({
             ease: "easeInOut",
             delay: floatDelay,
           },
-          filter: { duration: 0.3 }
+          filter: { duration: 0.2 }
         }}
-        className="flex flex-col items-center gap-3"
+        className="flex flex-col items-center gap-2.5"
       >
         <div 
             className="transition-transform duration-300"
@@ -106,24 +103,22 @@ const SkillIcon: React.FC<SkillIconProps> = ({
                 className="transition-colors duration-300"
                 style={{ 
                     color: skill.color,
-                    filter: isFront ? `drop-shadow(0 0 8px ${skill.color}44)` : "none"
+                    filter: isFront && !active ? `drop-shadow(0 0 6px ${skill.color}33)` : "none"
                 }}
             />
         </div>
 
-        {/* Text below - Only visible for front icons or hovered ones */}
-        <AnimatePresence>
-          {(isFront || isHovered) && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 5 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 5 }}
-              className="text-[10px] font-bold tracking-[0.2em] text-white text-center uppercase whitespace-nowrap drop-shadow-sm select-none"
-            >
-              {skill.name}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Text below - Simplified with opacity instead of AnimatePresence to avoid DOM flickers */}
+        <div
+          className="text-[10px] font-bold tracking-[0.15em] text-white/90 text-center uppercase whitespace-nowrap select-none transition-all duration-300"
+          style={{ 
+            opacity: isFront || isHovered ? 1 : 0,
+            transform: `scale(${isFront || isHovered ? 1 : 0.8})`,
+            marginTop: "4px"
+          }}
+        >
+          {skill.name}
+        </div>
       </motion.div>
     </motion.div>
   );

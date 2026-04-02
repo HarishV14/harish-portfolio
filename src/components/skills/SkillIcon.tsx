@@ -25,6 +25,9 @@ const SkillIcon: React.FC<SkillIconProps> = ({
   isHovered,
   onHover,
 }) => {
+  // Derive icon size from sphere radius so icons never feel too large on mobile
+  const iconSize = radius <= 100 ? 22 : radius <= 120 ? 26 : radius <= 140 ? 28 : 32;
+  const hitOffset = iconSize / 2;
   // Normalize Z for depth effects (-radius to +radius)
   const normZ = z / radius; 
   
@@ -59,8 +62,8 @@ const SkillIcon: React.FC<SkillIconProps> = ({
         position: "absolute",
         left: "50%",
         top: "50%",
-        x: x - 25, // Adjusted for slightly larger hit area
-        y: y - 25, 
+        x: x - hitOffset,
+        y: y - hitOffset,
         zIndex: Math.round(z + 1000),
       }}
       animate={{
@@ -99,7 +102,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({
             }}
         >
             <skill.icon 
-                size={38} 
+                size={iconSize} 
                 className="transition-colors duration-300"
                 style={{ 
                     color: skill.color,

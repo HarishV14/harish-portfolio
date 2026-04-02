@@ -10,8 +10,8 @@ export default function Skills() {
   return (
     <SectionWrapper
       id="skills"
-      className="relative flex flex-col items-center justify-center min-h-[90vh] py-12"
-      containerClassName="flex flex-col items-center justify-center max-h-[800px]"
+      className="relative flex flex-col items-center justify-between md:h-screen md:overflow-hidden pt-24 pb-12 scroll-mt-20"
+      containerClassName="flex flex-col items-center justify-between w-full h-full max-h-[90vh]"
     >
       {/* Background Dots - Consistency with Hero */}
       <div 
@@ -33,7 +33,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-center z-10 mb-2 md:mb-6"
+        className="text-center z-10"
       >
         <span className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-accent/60 uppercase mb-2 block">
           Technical Expertise
@@ -54,7 +54,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.1 }}
         viewport={{ once: true }}
-        className="relative flex items-center justify-center py-2 md:py-5"
+        className="relative flex items-center justify-center flex-1"
       >
         <SkillSphere skills={skills} />
       </motion.div>
@@ -64,7 +64,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         viewport={{ once: true }}
-        className="text-center z-10 -mt-2"
+        className="text-center z-10"
       >
         <p className="text-slate-500 text-[10px] uppercase tracking-[0.3em] flex items-center gap-2 justify-center">
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />

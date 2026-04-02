@@ -195,10 +195,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-40 pb-16 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-24 sm:pt-32 md:pt-40 pb-16 overflow-hidden"
     >
       <Container className="w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-10 items-center">
 
           {/* ── Left Column ── */}
           <motion.div
@@ -209,7 +209,7 @@ export default function Hero() {
           >
             {/* Greeting badge */}
             <motion.div variants={itemVariants} className="mb-4">
-              <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full text-lg font-bold border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 shadow-lg shadow-cyan-500/10">
+              <span className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base lg:text-lg font-bold border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 shadow-lg shadow-cyan-500/10">
                 {displayGreeting}
               </span>
             </motion.div>
@@ -243,7 +243,7 @@ export default function Hero() {
             {/* Typing animated title */}
             <motion.h1
               variants={itemVariants}
-              className="mb-6 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight whitespace-nowrap"
+              className="mb-6 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight"
             >
               <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                 {displayTypedText}
@@ -254,7 +254,7 @@ export default function Hero() {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="max-w-lg mb-10 text-slate-400 text-lg leading-relaxed"
+              className="max-w-lg mb-8 text-slate-400 text-base sm:text-lg leading-relaxed"
             >
               {heroData.description}
             </motion.p>

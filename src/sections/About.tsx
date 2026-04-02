@@ -25,12 +25,12 @@ export default function About() {
   };
 
   return (
-    <SectionWrapper id="about" className="relative overflow-hidden scroll-mt-32 pt-32 pb-24">
+    <SectionWrapper id="about" className="relative overflow-hidden scroll-mt-20 pt-16 sm:pt-24 md:pt-32 pb-16 md:pb-24">
       {/* Background Section Gradient - Subtle Glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] pointer-events-none rounded-full" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 blur-[120px] pointer-events-none rounded-full" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
         
         {/* Left Side: About Content */}
         <div className="flex flex-col gap-6">

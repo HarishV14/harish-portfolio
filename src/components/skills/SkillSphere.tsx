@@ -22,9 +22,10 @@ const SkillSphere: React.FC<SkillSphereProps> = ({ skills }) => {
   useEffect(() => {
     const updateRadius = () => {
       const width = window.innerWidth;
-      if (width < 640) setRadius(120);
-      else if (width < 1024) setRadius(150);
-      else setRadius(180); 
+      if (width < 480) setRadius(100);
+      else if (width < 640) setRadius(120);
+      else if (width < 1024) setRadius(140);
+      else setRadius(155); 
     };
     updateRadius();
     window.addEventListener("resize", updateRadius);
@@ -160,8 +161,8 @@ const SkillSphere: React.FC<SkillSphereProps> = ({ skills }) => {
       ref={containerRef}
       className="relative flex items-center justify-center select-none cursor-grab active:cursor-grabbing"
       style={{ 
-        width: Math.max(radius * 2.2, 350), 
-        height: Math.max(radius * 2.2, 350),
+        width: radius * 2.4, 
+        height: radius * 2.4,
         perspective: 1500
       }}
       onMouseDown={handleMouseDown}

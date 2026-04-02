@@ -45,7 +45,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-auto mt-2">
       {/* Pill Container */}
-      <nav className="flex items-center justify-between sm:justify-center gap-2 lg:gap-6 px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg">
+    <nav className="flex items-center justify-between gap-2 lg:gap-6 px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-lg">
         
         <Link 
           href="/" 
@@ -83,7 +83,7 @@ export default function Navbar() {
         </div>
         
         {/* Right Actions */}
-        <div className="flex items-center gap-3 ml-auto sm:ml-2">
+        <div className="flex items-center gap-3">
           <a
             href={siteMetadata.resumeUrl}
             target="_blank"

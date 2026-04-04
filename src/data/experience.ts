@@ -16,12 +16,12 @@ export const experiences: Experience[] = [
       {
         title: "OTT Platform Analytics",
         description:
-          "Architected and engineered comprehensive analytics for the OTT platform, focusing on user behavior, revenue metrics, and content performance insights.",
+          "Engineered OTT analytics for tracking user behavior, revenue, and content performance metrics.",
       },
       {
         title: "OTT Role Management",
         description:
-          "Developed a granular RBAC role management system for the OTT platform to manage secure content access and administrative workflows.",
+          "Developed a granular RBAC system to manage secure content access and administrative workflows.",
       },
       {
         title: "OTT Platform Asset Management",

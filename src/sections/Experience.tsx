@@ -52,21 +52,24 @@ export default function Experience() {
         className="w-full flex flex-col items-center"
       >
         {/* Section Header */}
-        <div className="text-center mb-5 px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2">
-            <span className="text-primary">Experience</span>
+        <div className="text-center mb-6 px-4">
+          <span className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-accent/60 uppercase mb-4 block">
+            CAREER PATH
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
+            Professional{" "}
+            <span className="bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">
+              Experience
+            </span>
           </h2>
-          <h3 className="text-lg md:text-xl text-white/80 font-medium mb-4">
-            Building scalable products in a startup environment.
-          </h3>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-normal">
-            Professional experience working on real-world platforms including
+          <p className="text-slate-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            Building scalable products in a startup environment, including real-world platforms like 
             EdTech systems and in-house OTT infrastructure.
           </p>
         </div>
 
         {/* Timeline Navigation */}
-        <div className="mb-4 flex justify-center px-4 w-full">
+        <div className="mb-2 flex justify-center px-4 w-full">
           <ExperienceTimeline
             experiences={experiences}
             activeIndex={activeIndex}

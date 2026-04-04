@@ -42,7 +42,7 @@ export default function Experience() {
   return (
     <SectionWrapper
       id="experience"
-      className="relative overflow-hidden pt-20 md:pt-28 pb-15 md:pb-20 md:min-h-screen flex flex-col justify-center"
+      className="relative overflow-hidden pt-20 md:pt-28 pb-8 md:pb-12 flex flex-col justify-center"
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}

@@ -28,7 +28,7 @@ export default async function Github() {
   }
 
   return (
-    <SectionWrapper id="github" className="py-24 relative overflow-hidden">
+    <SectionWrapper id="github" className="pt-24 md:pt-36 pb-24 scroll-mt-24 relative overflow-hidden">
       {/* Background Dots */}
       <div 
         className="absolute inset-0 opacity-5 -z-10 pointer-events-none"

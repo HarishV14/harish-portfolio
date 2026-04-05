@@ -36,7 +36,7 @@ export default function About() {
         <div className="flex flex-col gap-6">
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-              {title}
+              About
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full" />
           </div>

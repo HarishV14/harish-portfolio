@@ -99,7 +99,7 @@ export default function Contact() {
                 {contactData.availabilityBadge}
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                {contactData.title}
+                Contact
               </h2>
               <p className="text-lg text-slate-400 max-w-md pb-4">
                 {contactData.description}

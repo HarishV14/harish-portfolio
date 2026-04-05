@@ -13,9 +13,68 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+import { siteMetadata } from "@/data/site";
+
 export const metadata: Metadata = {
-  title: "Developer Portfolio",
-  description: "Modern developer portfolio built with Next.js and Tailwind CSS",
+  title: siteMetadata.title,
+  description: siteMetadata.description,
+  keywords: siteMetadata.keywords,
+  authors: [{ name: siteMetadata.author }],
+  creator: siteMetadata.author,
+  metadataBase: new URL(siteMetadata.siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.siteUrl,
+    siteName: siteMetadata.title,
+    images: [
+      {
+        url: siteMetadata.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteMetadata.title,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    images: [siteMetadata.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteMetadata.author,
+  jobTitle: "Full Stack Developer",
+  url: siteMetadata.siteUrl,
+  sameAs: [
+    siteMetadata.social.github,
+    siteMetadata.social.linkedin,
+  ],
+  description: siteMetadata.description,
+  knowsAbout: ["Django", "React", "PostgreSQL", "Python", "REST APIs", "Full Stack Development"],
 };
 
 export default function RootLayout({
@@ -25,6 +84,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} dark scroll-smooth`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased min-h-screen flex flex-col font-sans bg-background text-foreground" suppressHydrationWarning>
         <VisitorProvider>
           <BackgroundParticles />

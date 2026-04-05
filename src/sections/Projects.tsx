@@ -30,10 +30,7 @@ export default function Projects() {
           PORTFOLIO
         </span>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
-          Featured{" "}
-          <span className="bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">
-            Projects
-          </span>
+          Projects
         </h2>
         <p className="text-slate-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
           A curated selection of projects that made me confident in building software.

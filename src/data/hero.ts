@@ -27,7 +27,7 @@ export const heroData = {
     yearsExperience: "1.5+",
   },
   imageSrc: "/images/HarishPhoto.PNG",
-  imageAlt: "Harish V Portrait",
+  imageAlt: "Harish V Full Stack Developer",
   socials: [
     {
       name: "GitHub",

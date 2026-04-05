@@ -241,7 +241,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Typing animated title */}
-            <motion.h1
+            <motion.div
               variants={itemVariants}
               className="mb-6 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight"
             >
@@ -249,7 +249,7 @@ export default function Hero() {
                 {displayTypedText}
               </span>
               <span className="inline-block w-[2px] sm:w-[3px] h-[0.9em] ml-1 bg-cyan-400 align-middle animate-pulse rounded-sm" />
-            </motion.h1>
+            </motion.div>
 
             {/* Description */}
             <motion.p

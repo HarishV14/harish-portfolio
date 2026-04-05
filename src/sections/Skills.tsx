@@ -43,10 +43,7 @@ export default function Skills() {
           Technical Expertise
         </span>
         <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-2 leading-tight">
-          My{" "}
-          <span className="bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">
-            Skills
-          </span>
+          Skills
         </h2>
         <p className="text-slate-400 max-w-lg mx-auto text-xs md:text-sm leading-relaxed">
           Building powerful applications with modern stacks.

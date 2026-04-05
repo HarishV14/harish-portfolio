@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiX, FiVolume2, FiVolumeX, FiArrowRight, FiExternalLink, FiDownload, FiMail } from "react-icons/fi";
 import { useVisitor } from "@/context/VisitorContext";
+import { siteMetadata } from "@/data/site";
 
 interface AssistantPanelProps {
   onClose: () => void;
@@ -45,7 +46,7 @@ export default function AssistantPanel({ onClose }: AssistantPanelProps) {
 
   const actions = [
     { name: "Explore My Work", href: "#experience", icon: FiExternalLink },
-    { name: "Download Resume", href: "/document/Harish%20V%20Resume.pdf", icon: FiDownload, download: true },
+    { name: "Download Resume", href: siteMetadata.resumeUrl, icon: FiDownload, download: true },
     { name: "Contact Me", href: "#contact", icon: FiMail },
   ];
 

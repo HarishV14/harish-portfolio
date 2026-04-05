@@ -1,3 +1,4 @@
+import { siteMetadata } from "./site";
 export const heroData = {
   greeting: "Hi, I'm Harish 👋",
   roles: [
@@ -16,7 +17,7 @@ export const heroData = {
     },
     {
       name: "View My Resume",
-      href: "/document/Harish%20V%20Resume.pdf",
+      href: siteMetadata.resumeUrl,
     },
   ],
   currentWork: {
@@ -25,7 +26,7 @@ export const heroData = {
     companyUrl: "https://testpress.tech",
     yearsExperience: "1.5+",
   },
-  imageSrc: "/document/HarishPhoto.PNG",
+  imageSrc: "/hero/HarishPhoto.PNG",
   imageAlt: "Harish V Portrait",
   socials: [
     {

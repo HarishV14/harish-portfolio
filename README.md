@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Harish V - Portfolio
 
-## Getting Started
+A premium, high-performance developer portfolio built with Next.js, TypeScript, and TailwindCSS. Designed to showcase projects, skills, and experience with a modern aesthetic and AI-integrated features.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Dynamic Hero Section**: Engaging introduction with type animation and interactive background particles.
+- **AI Chat Assistant**: Built-in professional assistant powered by **Groq SDK** and **LLama 3.1** to provide instant answers about Harish's background.
+- **GitHub Integration**: Live activity tracking, including contribution calendar, real-time stats (streaks, total contributions), and pinned repositories.
+- **Interactive Projects & Experience**: Smoothly animated cards and timeline showcasing technical expertise and professional growth.
+- **Modern Tech Stack**: Leveraging the latest web technologies for speed, performance, and SEO.
+- **Premium UX**: Custom cursor, Lenis smooth scrolling, and subtle Framer Motion animations for a high-end feel.
+- **Responsive & Dark Mode**: Mobile-first design optimized for all screen sizes with a consistent, sophisticated dark theme.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [TailwindCSS 4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **AI Engine**: [Groq SDK](https://groq.com/) (LLama 3.1)
+- **Smooth Scroll**: [Lenis](https://lenis.darkroom.engineering/)
+- **Background**: [@tsparticles/react](https://particles.js.org/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Folder Structure
 
-## Learn More
+The project follows a strict modular architecture:
+- `/src/app`: Page routes, API handlers, and Next.js layout configurations.
+- `/src/components`: Reusable UI elements (buttons, cards, skeleton loaders).
+- `/src/sections`: Major page segments (Hero, About, Projects, Github Activity, etc.).
+- `/src/data`: Centralized data files for all portfolio content, ensuring easy updates.
+- `/src/types`: Comprehensive TypeScript interfaces and type definitions.
+- `/src/lib`: Logic for external API integrations (GitHub) and utility functions.
 
-To learn more about Next.js, take a look at the following resources:
+## 🚥 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Node.js 18.x or later
+- npm / yarn / pnpm
 
-## Deploy on Vercel
+### Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/HarishV14/harish-portfolio.git
+   cd harish-portfolio
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and add the following:
+   ```env
+   GROQ_API_KEY=your_groq_api_key
+   GITHUB_TOKEN=your_github_personal_access_token
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) to see the portfolio.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+Built with ❤️ by [Harish V](https://github.com/HarishV14)
+

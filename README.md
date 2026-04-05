@@ -58,6 +58,7 @@ The project follows a strict modular architecture:
    ```env
    GROQ_API_KEY=your_groq_api_key
    GITHUB_TOKEN=your_github_personal_access_token
+   NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_public_web3forms_token
    ```
 
 4. Run the development server:

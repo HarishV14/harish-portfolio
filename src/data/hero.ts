@@ -26,7 +26,7 @@ export const heroData = {
     companyUrl: "https://testpress.tech",
     yearsExperience: "1.5+",
   },
-  imageSrc: "/hero/HarishPhoto.PNG",
+  imageSrc: "/images/HarishPhoto.PNG",
   imageAlt: "Harish V Portrait",
   socials: [
     {
